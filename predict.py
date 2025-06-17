@@ -14,4 +14,4 @@ def predict_image(img_path, model_path='my_model.h5'):
         print(f"{img_path}: 고양이입니다.")
 
 if __name__ == "__main__":
-    predict_image(r'E:\Pet Image Classification\PetImagesTest\Cat\catTest0.jpg')
+    predict_image(r'E:\Pet Image Classification\PetImagesTest\Dog\dogTest0.jpg')

@@ -4,11 +4,11 @@ import keras
 from keras.src.legacy.preprocessing.image import ImageDataGenerator
 from keras import layers, models
 from keras.utils import load_img, img_to_array
+import itertools
 
 train_dir = r'E:\\Pet Image Classification\\PetImages'
 validation_dir = r'E:\\Pet Image Classification\\PetImagesTest'
 
-# 이미지 증강/정규화
 train_datagen = ImageDataGenerator(rescale=1./255)
 validation_datagen = ImageDataGenerator(rescale=1./255)
 
@@ -25,6 +25,14 @@ validation_generator = validation_datagen.flow_from_directory(
     batch_size=32,
     class_mode='binary'
 )
+
+def repeat_generator(generator):
+    while True:
+        for batch in generator:
+            yield batch
+
+train_gen_repeat = repeat_generator(train_generator)
+val_gen_repeat = repeat_generator(validation_generator)
 
 model = models.Sequential()
 model.add(layers.Input(shape=(150, 150, 3)))
@@ -48,12 +56,9 @@ model.compile(
 
 history = model.fit(
     train_generator,
-    steps_per_epoch=train_generator.samples // train_generator.batch_size,
     epochs=10,
-    validation_data=validation_generator,
-    validation_steps=validation_generator.samples // validation_generator.batch_size
+    validation_data=validation_generator
 )
 
-# 모델 저장
 model.save('my_model.h5')
 print('모델이 my_model.h5 파일로 저장되었습니다.')
