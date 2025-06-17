@@ -60,5 +60,5 @@ history = model.fit(
 )
 
 # 학습이 끝난 모델을 파일로 저장한다
-model.save('my_model.h5')
-print('모델이 my_model.h5 파일로 저장되었다')
+model.save('my_model.keras')
+print('모델이 my_model.keras 파일로 저장되었다')
