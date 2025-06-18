@@ -15,4 +15,4 @@ def predict_image(img_path, model_path='my_model.keras'):
 
 if __name__ == "__main__":
     # 아래 경로를 원하는 이미지로 바꿔서 사용한다
-    predict_image(r'E:\Pet Image Classification\PetImagesTest\Dog\dog_123.jpg')
+    predict_image(r'E:\Pet Image Classification\PetImagesTest\Cat\cat_124.jpg')
