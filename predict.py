@@ -9,10 +9,10 @@ def predict_image(img_path, model_path='my_model.keras'):
     img_array = np.expand_dims(img_array, axis=0)  # 배열 모양을 바꿔서 모델이 예측할 수 있게 한다
     prediction = model.predict(img_array)  # 모델로 이미지를 예측한다
     if prediction[0][0] > 0.5:
-        print(f"{img_path}: 개다")
+        print(f"{img_path}: 개")
     else:
-        print(f"{img_path}: 고양이다")
+        print(f"{img_path}: 고양이")
 
 if __name__ == "__main__":
     # 아래 경로를 원하는 이미지로 바꿔서 사용한다
-    predict_image(r'E:\Pet Image Classification\PetImagesTest\Dog\dogTest0.jpg')
+    predict_image(r'E:\Pet Image Classification\PetImagesTest\Dog\dog_123.jpg')
